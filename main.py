@@ -22,4 +22,19 @@ frameworkTransfer = SmlJsonTreeExplorerAttrTransfer(getNativePath() + "/..")
 dispensorTransfer.doRefactor()
 laserTransfer.doRefactor()
 frameworkTransfer.doRefactor()
+
+
+from SmlTagFinder import SmlTagFinder
+
+a = SmlTagFinder('C:/Users/soon/Desktop/Soon_dispenser_2021', 'TreeExplorer')
+r = a.findAllOfSmlHasSpecificTag()
+
+from EnvironVariable import getNativePath
+
+from SmlTagFinder import SmlTagFinder
+
+smlTagFinder = SmlTagFinder('C:/Users/soon/Desktop/Soon_dispenser_2021', 'TreeExplorer')
+smlTagFinder2 = SmlTagFinder(getNativePath() + "/..", 'TreeExplorer')
+hasTagSmls = smlTagFinder.findAllOfSmlHasSpecificTag()
+hasTagSmls2 = smlTagFinder2.findAllOfSmlHasSpecificTag()
 '''
