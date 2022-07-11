@@ -23,9 +23,9 @@ class SmlJsonTreeExplorerAttrTransfer(SmlJsonAttrTransfer):
 
     def changeJsonData(self, jsonData):
         # for jsonStr in jsonList:
-        becomeChangeData = json.loads(jsonData)
-        self.findAndChangeJsonData(becomeChangeData)
-        return becomeChangeData
+        data = json.loads(jsonData)
+        changedData = self.findAndChangeJsonData(data)
+        return changedData
 
     def findAndChangeJsonData(self, jsonData):
         if isinstance(jsonData, Dict):
@@ -33,10 +33,12 @@ class SmlJsonTreeExplorerAttrTransfer(SmlJsonAttrTransfer):
                 t = jsonData.get('value')
                 jsonData['value'] = '\"' + t + '\"'
             for k, v in jsonData.items():
-                self.findAndChangeJsonData(v)
+                jsonData[k] = self.findAndChangeJsonData(v)
         elif isinstance(jsonData, List):
-            for json in jsonData:
-                self.findAndChangeJsonData(json)
+            for idx in range(len(jsonData)):
+                 jsonData[idx] = self.findAndChangeJsonData(jsonData[idx])
+
+        return jsonData
 
     def findAttr(self, element):
         ctorNodes = element.elementsByTagName(self.attrConditionData.tagName)

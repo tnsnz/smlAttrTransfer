@@ -32,13 +32,13 @@ class SmlCtorAttrTransfer(SmlAttributeTransfer):
             nameElement = ctorNode.attributes().namedItem('name')
             typeElement = ctorNode.attributes().namedItem('type')
 
-            if not self.ignoreFlag & self.IgnoreAttr.IGNOREDVALUE and "" == defValElement.nodeValue():
+            if not self.ignoreFlag & self.IgnoreAttr.IGNOREDVALUE and "" == defValElement.nodeValue() and "str" == typeElement.nodeValue():
                 ctorNode.toElement().setAttribute('defval', self.attrConditionData.attrDefValue)
 
-            if not self.ignoreFlag & self.IgnoreAttr.IGNOREDVALUE and "" == nameElement.nodeValue():
+            if not self.ignoreFlag & self.IgnoreAttr.IGNOREDNAME and "" == nameElement.nodeValue():
                 ctorNode.toElement().setAttribute('name', self.attrConditionData.attrName)
 
-            if not self.ignoreFlag & self.IgnoreAttr.IGNOREDVALUE and "" == typeElement.nodeValue():
+            if not self.ignoreFlag & self.IgnoreAttr.IGNOREDTYPE and "" == typeElement.nodeValue():
                 ctorNode.toElement().setAttribute('type', self.attrConditionData.attrType)
 
             if self.upathRenameFlag and "upath" == nameElement.nodeValue() and not defValElement.nodeValue().startswith('"') and '' != defValElement.nodeValue():

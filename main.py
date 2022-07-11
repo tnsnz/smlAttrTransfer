@@ -3,26 +3,28 @@
 from EnvironVariable import getNativePath
 from SmlCtorAttrTransfer import SmlCtorAttrTransfer
 
-nativeSmlAttrTransfer = SmlCtorAttrTransfer("", "str", '""', getNativePath() + "/..", SmlCtorAttrTransfer.IgnoreAttr.IGNOREDNAME, True)
-dispenserSmlAttrTransfer = SmlCtorAttrTransfer("", "str", '""', "C:/Users/soon/Desktop/Soon_dispenser_2021", SmlCtorAttrTransfer.IgnoreAttr.IGNOREDNAME, True)
-laserSmlAttrTransfer = SmlCtorAttrTransfer("", "str", '""', "C:/Users/soon/Desktop/Soon_laser_cut_sorter", SmlCtorAttrTransfer.IgnoreAttr.IGNOREDNAME, True)
-
+nativeSmlAttrTransfer = SmlCtorAttrTransfer("", "str", '""', getNativePath() + "/..", SmlCtorAttrTransfer.IgnoreAttr.IGNOREDTYPE | SmlCtorAttrTransfer.IgnoreAttr.IGNOREDNAME, True)
 nativeSmlAttrTransfer.doRefactor()
-dispenserSmlAttrTransfer.doRefactor()
-laserSmlAttrTransfer.doRefactor()
 
+dispenserSmlAttrTransfer = SmlCtorAttrTransfer("", "str", '""', "C:/Users/soon/Desktop/Soon_dispenser_2021", SmlCtorAttrTransfer.IgnoreAttr.IGNOREDTYPE | SmlCtorAttrTransfer.IgnoreAttr.IGNOREDNAME, True)
+dispenserSmlAttrTransfer.doRefactor()
+
+# skip
+# laserSmlAttrTransfer = SmlCtorAttrTransfer("", "str", '""', "C:/Users/soon/Desktop/Soon_laser_cut_sorter", SmlCtorAttrTransfer.IgnoreAttr.IGNOREDTYPE | SmlCtorAttrTransfer.IgnoreAttr.IGNOREDNAME, True)
+# laserSmlAttrTransfer.doRefactor()
 
 from EnvironVariable import getNativePath
 from SmlJsonTreeExplorerAttrTransfer import SmlJsonTreeExplorerAttrTransfer
 
 dispensorTransfer = SmlJsonTreeExplorerAttrTransfer('C:/Users/soon/Desktop/Soon_dispenser_2021')
-laserTransfer = SmlJsonTreeExplorerAttrTransfer("C:/Users/soon/Desktop/Soon_laser_cut_sorter")
-frameworkTransfer = SmlJsonTreeExplorerAttrTransfer(getNativePath() + "/..")
-
 dispensorTransfer.doRefactor()
-laserTransfer.doRefactor()
+
+frameworkTransfer = SmlJsonTreeExplorerAttrTransfer(getNativePath() + "/..")
 frameworkTransfer.doRefactor()
 
+# skip
+# laserTransfer = SmlJsonTreeExplorerAttrTransfer("C:/Users/soon/Desktop/Soon_laser_cut_sorter")
+# laserTransfer.doRefactor()
 
 from SmlTagFinder import SmlTagFinder
 
